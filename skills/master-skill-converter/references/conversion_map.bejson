@@ -1,0 +1,32 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Gemini CLI",
+  "Schema_Name": "ConversionMapping",
+  "Records_Type": ["PlatformMapping"],
+  "Fields": [
+    {"name": "source_platform", "type": "string"},
+    {"name": "source_key", "type": "string"},
+    {"name": "gemini_key", "type": "string"},
+    {"name": "category", "type": "string"},
+    {"name": "transformation_rule", "type": "string"},
+    {"name": "notes", "type": "string"}
+  ],
+  "Values": [
+    ["Codex", "capabilities", "allowed_tools", "manifest", "rename", "Direct mapping of tool permissions."],
+    ["Codex", "compatibility", "metadata.original_compatibility", "manifest", "nest", "Preserve runtime requirements in metadata."],
+    ["Codex", "$.", "/", "syntax", "regex", "Convert Codex CLI prefix to Gemini slash command."],
+    ["Codex", "lib/", "scripts/", "structure", "move", "Consolidate code assets."],
+    ["Codex", "bin/", "scripts/", "structure", "move", "Consolidate binaries into scripts."],
+    ["Codex", "ref/", "references/", "structure", "rename", "Standardize documentation paths."],
+    ["Codex", "agents/openai.yaml", "GEMINI.md", "context", "replace", "Swap security/agent config for repo instructions."],
+    ["Claude", "allowed-tools", "allowed_tools", "manifest", "rename", "Hyphen to underscore normalization."],
+    ["Claude", "invocation-policy", "metadata.invocation_policy", "manifest", "nest", "Move proprietary policy to metadata."],
+    ["Claude", "CLAUDE.md", "GEMINI.md", "context", "replace", "Swap primary context file."],
+    ["Claude", "Routines", "AGENT.md", "orchestration", "AI_required", "Requires subagent reconfiguration."],
+    ["Qwen", "tools", "allowed_tools", "manifest", "rename", "Standardize tool key."],
+    ["Qwen", "expert_routing_preference", "metadata.qwen_legacy.expert_routing_preference", "manifest", "nest", "Preserve MoE routing intent."],
+    ["Qwen", "QWEN.md", "GEMINI.md", "context", "replace", "Swap local-centric context for repo-wide."],
+    ["Qwen", ".qwen/", null, "structure", "delete", "Remove internal local state history."]
+  ]
+}

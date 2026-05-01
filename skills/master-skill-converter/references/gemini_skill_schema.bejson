@@ -1,0 +1,21 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Gemini CLI",
+  "Schema_Name": "GeminiSkillSchema",
+  "Records_Type": ["FieldValidation"],
+  "Fields": [
+    {"name": "field_name", "type": "string"},
+    {"name": "required", "type": "boolean"},
+    {"name": "type", "type": "string"},
+    {"name": "description", "type": "string"}
+  ],
+  "Values": [
+    ["name", true, "string", "The unique identifier for the skill."],
+    ["description", true, "string", "A detailed explanation of the skill's purpose and triggers."],
+    ["allowed_tools", false, "array", "List of tools the agent is permitted to use."],
+    ["mcpServers", false, "array", "List of Model Context Protocol servers to connect."],
+    ["metadata", false, "object", "Arbitrary key-value pairs for platform-specific data."],
+    ["capabilities", false, "array", "DEPRECATED: Use allowed_tools instead."]
+  ]
+}
